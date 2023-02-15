@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='UTF-8'>
+  <title>«Shelf Indulgence» Book Club</title>
+  <style>
+    body {
+      /* Hide the bottom scrollbar */
+      overflow-x: hidden;
+      overflow-y: auto;
+      background-color: #EEEEEE;
+      font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+      padding: 0;
+      margin: 0;
+    }
+
+    #titlebar {
+      display: block;
+      background: url('images/woods.jpg');
+      /* Picture appears once and fills the page */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* Picture scales when resized */
+      position: relative;
+    }
+
+    #titletext {
+      /* Font size is set to 8% of screen width. */
+      font-size: 8vw;
+      text-align: center;
+      color: #FFFFFF;
+    }
+
+    /* What to do when the width is less than 400 pixels */
+    @media screen and (max-width: 400px) {
+      #titletext {
+        /* Do font-size * (max-width / 100) */
+        font-size: 32px;
+      }
+    }
+
+    /* What to do when the width exceeds 700 pixels */
+    @media screen and (min-width: 700px) {
+      #titletext {
+        /* Make padding constant */
+        padding: 70px 45px;
+        padding-bottom: 10px;
+        font-size: 56px;
+      }
+    }
+
+    #navbar {
+      display: block;
+      background-color: #070D0D;
+      /* No space between the tab buttons */
+      font-size: 0;
+      /* Navigation bar stretches across the whole screen and stays on the whole screen */
+      width: 100%;
+      border-bottom: 1px solid #070D0D;
+    }
+
+    #navbar button {
+      display: inline-block;
+      background-color: #070D0D;
+      font-family: inherit;
+      font-size: 2.75vw;
+      color: #BBBBBB;
+      transition-duration: 0.5s;
+      transition-property: color, background-color;
+      position: relative;
+      width: unset;
+      height: 100%;
+      border: 0;
+      padding: 2vw 3vw;
+    }
+
+    @media screen and (max-width: 920px) {
+      #navbar button {
+        width: 25%;
+      }
+    }
+
+    @media screen and (min-width: 750px) {
+      #navbar button {
+        font-size: 20.625px;
+        padding: 15px 22.5px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      #navbar button {
+        font-size: 16.5px;
+        padding: 12px 18px;
+        width: 50%;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      #navbar button {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    #navbar button.active {
+      background-color: #555555;
+      color: #FFFFFF;
+      transition-duration: 0.3s;
+    }
+
+    #navbar button:hover {
+      background-color: #777777;
+    }
+
+    .tabtext {
+      display: none;
+      color: #070D0D;
+      width: 100%;
+    }
+
+    .tabtext.active {
+      display: block;
+    }
+
+    .tabtext h1, .tabtext h2, .tabtext h3, .tabtext h4, 
+    .tabtext h5, .tabtext h6, .tabtext p, .tabtext table {
+      padding-left: 3vw;
+      padding-right: 7vw;
+    }
+
+    .tabtext img {
+        display: inline-block;
+        width: 70%;
+    }
+
+    .tabtext ul {
+        width: 90%;
+        margin-left: 3vw;
+    }
+
+    .tabtext table {
+        width: 94%;
+        margin-left: 3vw;
+        border-collapse: collapse;
+    }
+
+    .tabtext table,
+    .tabtext th,
+    .tabtext td {
+        border: 1px solid #070D0D;
+    }
+
+    .tabtext th,
+    .tabtext td {
+        padding: 8px;
+    }
+
+    .tabtext abbr {
+        text-decoration: none;
+    }
+
+    #Home .homepanel {
+        font-size: 0;
+        width: 94%;
+        height: 20vh;
+        margin-left: 3vw;
+    }
+
+    #Home img {
+        display: inline-block;
+        object-fit: cover;
+        width: 33%;
+        height: 100%;
+    }
+
+    #Home abbr {
+        width: 33%;
+        height: 100%;
+    }
+
+    #Fiction .bookpanels {
+        font-size: 0;
+        width: 95%;
+        height: 35vw;
+        margin-left: 3vw;
+    }
+
+    #Fiction .bookpanel {
+        display: inline-block;
+        object-fit: fill;
+        width: 50%;
+        height: 50%;
+    }
+
+    footer {
+        background-color: #070D0D;
+        color: #FFFFFF;
+        font-size: 13px;
+        text-decoration: none;
+        width: 100%;
+        padding-left: 3vw;
+        padding-right: 7vw;
+        padding-top: 2vh;
+    }
+
+    footer a:link {
+        color: inherit;
+    }
+
+    footer a:visited {
+        color: #7777FF;
+    }
+
+    footer a:hover {
+        color: #AAAAAA;
+        text-decoration: underline;
+    }
+
+    footer a:active {
+        color: #BBBBBB;
+    }
+  </style>
+</head>
+
+<body>
+  <div id=titlebar>
+    <div id=titletext>
+      <b>«Shelf Indulgence» Book Club</b>
+    </div>
+  </div>
+
+  <div id=navbar>
+    <button class=navtab id=home>Home</button>
+    <button class=navtab>Fiction</button>
+    <button class=navtab>Fantasy</button>
+    <button class=navtab>Form</button>
+  </div>
+
+  <div class=tabtext id=Home>
+    <h1>Home</h1>
+    <hr>
+    <p>
+    Welcome to a little webpage where people live, laugh and love books! Here you can find a small collection of great books and quotes. 
+    </p>
+    <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+
+    <p>
+    My favorite genres are:
+    </p>
+
+    <ul>
+      <li>Psychological Fiction</li>
+      <li>Murder Mystery</li>
+      <li>High Fantasy</li>
+      <li>Gothic Fiction</li>
+    </ul>
+
+    <p>
+        To explore more about the book world, click the tabs above or check out my top 3 books below:
+        </p>
+    
+        <div class=homepanel>
+          <a href='#EvelynHugo' onclick='tabOpen("Fiction")'>
+            <abbr title='The Seven Husbands of Evelyn Hugo'><img src='images/EvelynHugo.jpg' style="width: 150px; height: 250px; margin-right: 5px;"></abbr>
+          </a>
+          <a href='#TheSecretHistory' onclick='tabOpen("Fiction")'>
+            <abbr title='The Secret History'><img src='images/TheSecretHistory.jpg' style="width: 150px; height: 250px; margin-right: 5px;"></abbr>
+          </a>
+          <a href='#AssassinsApprentice' onclick='tabOpen("Fantasy")'>
+            <abbr title='Assassin&apos;s Apprentice'><img src='images/AssassinsApprentice.jpg' style="width: 150px; height: 250px; margin-right: 5px;"></abbr>
+          </a>
+        </div>
+
+    <br><br><br><br><br>
+
+    <p>
+    Here is a brief overview of my last read:
+    </p>
+
+    <table>
+        <tr><th>Title</th><td>The Secret History</td></tr>
+        <tr><th>Author</th><td>Donna Tartt</td></tr>
+        <tr><th>Genres</th><td>Fiction, Mystery, Contemporary, Classics, Thriller, Literary Fiction, Mystery Thriller</td></tr>
+        <tr><th>Number of Pages</th><td>559</td></tr>
+        <tr><th>First published</th><td>September 16, 1992</td></tr>
+        <tr><th>My rating</th><td>★★★★★</td></tr>
+    </table>
+    <br>
+  </div>
+
+  <div class=tabtext id=Fiction>
+    <h1>Fiction</h1>
+    <hr>
+
+    <p>
+    There is a total of 4 articles on fiction books. Click on the image to jump to the section:
+    </p>
+
+    <div class=bookpanels>
+      <a href='#EvelynHugo'>
+        <abbr title='The Seven Husbands of Evelyn Hugo''><img class=bookpanel src='images/EvelynHugo.jpg' style="width: 150px; height: 250px;"></abbr>
+      </a>
+      <a href='#TheSecretHistory'>
+        <abbr title='The Secret History'><img class=bookpanel src='images/TheSecretHistory.jpg' style="width: 150px; height: 250px;"></abbr>
+      </a>
+      <br>
+      <a href='#Circe'>
+        <abbr title='Circe'><img class=bookpanel src='images/Circe.jpg' style="width: 150px; height: 250px;"></abbr>
+      </a>
+      <a href='#DorianGray'>
+        <abbr title='The Picture of Dorian Gray'><img class=bookpanel src='images/DorianGray.jpg' style="width: 150px; height: 250px;"></abbr>
+      </a>
+    </div>
+
+    <h2><a name=EvelynHugo>The Seven Husbands of Evelyn Hugo:</a></h2>
+
+    <p>
+    <b>Summary:</b>
+    </p>
+    <p>
+    Aging and reclusive Hollywood movie icon Evelyn Hugo is finally ready to tell the truth about her glamorous and scandalous life. But when she chooses unknown magazine reporter Monique Grant for the job, no one is more astounded than Monique herself. Why her? Why now?
+    </p>
+    <p>
+    Monique is not exactly on top of the world. Her husband has left her, and her professional life is going nowhere. Regardless of why Evelyn has selected her to write her biography, Monique is determined to use this opportunity to jumpstart her career.
+    </p>
+    <p>
+    Summoned to Evelyn’s luxurious apartment, Monique listens in fascination as the actress tells her story. From making her way to Los Angeles in the 1950s to her decision to leave show business in the ‘80s, and, of course, the seven husbands along the way, Evelyn unspools a tale of ruthless ambition, unexpected friendship, and a great forbidden love. Monique begins to feel a very real connection to the legendary star, but as Evelyn’s story near its conclusion, it becomes clear that her life intersects with Monique’s own in tragic and irreversible ways.
+    </p>
+    
+    <table>
+    <tr><th>Chapter №</th><th>Quote</th>
+    <tr><td>Chapter 4</td>
+        <td>
+        “When you’re given an opportunity to change your life, be ready to do whatever it takes to make it happen. The world doesn’t give things, you take things.”
+        </td>
+    </tr>
+    <tr><td>Chapter 21</td>
+        <td>
+        “Sometimes reality comes crashing down on you. Other times reality simply waits, patiently, for you to run out of the energy it takes to deny it.”
+        </td>
+    </tr>
+    <tr><td>Chapter 32</td>
+        <td>
+        “Never let anyone make you feel ordinary.”
+        </td>
+    </tr>
+    </table>
+    
+
+    <h2><a name=TheSecretHistory>The Secret History:</a></h2>
+
+    <p>
+    <b>Summary:</b>
+    </p>
+    <p>
+    Under the influence of their charismatic classics professor, a group of clever, eccentric misfits at an elite New England college discover a way of thinking and living that is a world away from the humdrum existence of their contemporaries. But when they go beyond the boundaries of normal morality they slip gradually from obsession to corruption and betrayal, and at last—inexorably—into evil.
+    </p>
+    
+    <table>
+    <tr><th>Page №</th><th>Quote</th></tr>
+    <tr><td>Page 40</td>
+        <td>
+        “Beauty is terror. whatever we call beautiful, we quiver before it.”
+        </td>
+    </tr>
+    <tr><td>Page 107</td>
+        <td>
+        “The mere sight of her sparked an almost infinite range of fantasy, from greek to gothic, from vulgar to divine.”
+        </td>
+    </tr>
+    <tr><td>Page 312</td>
+        <td>
+        “Some things are too terrible to grasp at once. other things – naked, sputtering, indelible in their horror – are too terrible to really ever grasp at all. it is only later, in solitude, in memory, that the realization dawns: when the ashes are cold; when the mourners have departed; when one looks around and finds oneself – quite to one's surprise – in an entirely different world.”
+        </td>
+    </tr>
+    </table>
+
+
+    <h2><a name='Circe'>Circe:</a></h2>
+    <p>
+    <b>Summary:</b>
+    </p>
+    <p>
+    In the house of Helios, god of the sun and mightiest of the Titans, a daughter is born. But Circe is a strange child--neither powerful like her father nor viciously alluring like her mother. Turning to the world of mortals for companionship, she discovers that she does possess power: the power of witchcraft, which can transform rivals into monsters and menace the gods themselves.
+    </p>
+    <p>
+    Threatened, Zeus banishes her to a deserted island, where she hones her occult craft, tames wild beasts, and crosses paths with many of the most famous figures in all of mythology, including the Minotaur, Daedalus and his doomed son Icarus, the murderous Medea, and, of course, wily Odysseus.
+    </p>
+    <p>
+    But there is danger, too, for a woman who stands alone, and Circe unwittingly draws the wrath of both men and gods, ultimately finding herself pitted against one of the most terrifying and vengeful of the Olympians. To protect what she loves most, Circe must summon all her strength and choose, once and for all, whether she belongs with the gods she is born from or with the mortals she has come to love.
+    </p>
+
+    <table>
+    <tr><th>Chapter №</th><th>Quote</th></tr>
+    <tr><td>Chapter 4</td>
+        <td>
+        “That is one thing gods and mortals share. When we are young, we think ourselves the first to have each feeling in the world.”
+        </td>
+    </tr>
+    <tr><td>Chapter 6</td>
+        <td>
+        “Sorcery cannot be taught. You find it yourself, or you do not.”
+        </td>
+    </tr>
+    <tr><td>Chapter 11</td>
+        <td>
+        “But in a solitary life, there are rare moments when another when another soul dips near yours, as stars once a year brush the earth. Such a constellation was he to me.”
+        </td>
+    </tr>
+    </table>    
+
+    <h2><a name=DorianGray>The Picture of Dorian Gray:</a></h2>
+
+    <p>
+    <b>Summary:</b>
+    </p>
+    <p>
+    Oscar Wilde’s only novel is the dreamlike story of a young man who sells his soul for eternal youth and beauty.
+    </p>
+    <p>
+    In this celebrated work Wilde forged a devastating portrait of the effects of evil and debauchery on a young aesthete in late-19th-century England. Combining elements of the Gothic horror novel and decadent French fiction, the book centers on a striking premise: As Dorian Gray sinks into a life of crime and gross sensuality, his body retains perfect youth and vigor while his recently painted portrait grows day by day into a hideous record of evil, which he must keep hidden from the world. For over a century, this mesmerizing tale of horror and suspense has enjoyed wide popularity. It ranks as one of Wilde's most important creations and among the classic achievements of its kind.
+    </p>
+    
+    <table>
+    <tr><th>Chapter №</th><th>Quote</th><th>Page №</th></tr>
+    <tr><td>Chapter 2</td>
+        <td>
+        “The only way to get rid of a temptation is to yield to it. Resist it, and your soul grows sick with longing for the things it has forbidden to itself, with desire for what its monstrous laws have made monstrous and unlawful.”
+        </td>
+        <td style='background-color: #e8daff;'>Page 21</td>
+    </tr>
+    <tr><td>Chapter 7</td>
+        <td>
+        “The quivering, ardent sunlight showed him the lines of cruelty round the mouth as clearly as if he had been looking into a mirror after he had done some dreadful thing.”
+        </td>
+        <td style='background-color: #be95ff;'>Page 102</td>
+    </tr>
+    <tr><td>Chapter 19</td>
+        <td>
+        “'what does it profit a man if he gain the whole world and lose'-how does the quotation run?-'his own soul'?”
+        </td>
+        <td style='background-color: #a56eff;'>Page 244</td>
+    </tr>
+    </table>
+    <br>
+
+  </div>
+
+  <div class=tabtext id=Fantasy>
+    <h1>Fantasy</h1>
+    <hr>
+
+    <h2><a name='HarryPotter'>Harry Potter and the Half-Blood Prince:</a></h2>
+    <p>
+    <b>Summary:</b>
+    </p>
+    <p>
+    It is the middle of the summer, but there is an unseasonal mist pressing against the windowpanes. Harry Potter is waiting nervously in his bedroom at the Dursleys' house in Privet Drive for a visit from Professor Dumbledore himself. One of the last times he saw the Headmaster was in a fierce one-to-one duel with Lord Voldemort, and Harry can't quite believe that Professor Dumbledore will actually appear at the Dursleys' of all places. Why is the Professor coming to visit him now? What is it that cannot wait until Harry returns to Hogwarts in a few weeks' time? Harry's sixth year at Hogwarts has already got off to an unusual start, as the worlds of Muggle and magic start to intertwine...
+    </p>
+
+    <h2><a name='AssassinsApprentice'>Assassin&apos;s Apprentice:</a></h2>
+    <p>
+    <b>Summary:</b>
+    </p>
+    <p>
+    In a faraway land where members of the royal family are named for the virtues they embody, one young boy will become a walking enigma.
+    </p>
+    <p>
+    Born on the wrong side of the sheets, Fitz, son of Chivalry Farseer, is a royal bastard, cast out into the world, friendless and lonely. Only his magical link with animals - the old art known as the Wit - gives him solace and companionship. But the Wit, if used too often, is a perilous magic, and one abhorred by the nobility.
+    </p>
+    <p>
+    So when Fitz is finally adopted into the royal household, he must give up his old ways and embrace a new life of weaponry, scribing, courtly manners; and how to kill a man secretly, as he trains to become a royal assassin.
+    </p>
+
+    <table>
+    <tr><th>Quote №</th><th>Quote</th></tr>
+    <tr><td>1</td>
+        <td>
+        “Very little worth knowing is taught by fear.”
+        </td>
+    </tr>
+    <tr><td>2</td>
+        <td>
+        “When you spring to an idea, and decide it is truth, without evidence, you blind yourself to other possibilities.”
+        </td>
+    </tr>
+    <tr><td>3</td>
+        <td>
+        “All events, no matter how earthshaking or bizarre, are diluted within moments of their occurrence by the continuance of the necessary routines of day-to-day living.”
+        </td>
+    </tr>
+    </table>
+
+    <h2><a name='LOTR'>The Lord of the Rings:</a></h2>
+    <p>
+    <b>Summary:</b>
+    </p>
+    <p>
+    One Ring to rule them all, One Ring to find them, One Ring to bring them all and in the darkness bind them
+    </p>
+    <p>
+    From Sauron's fastness in the Dark Tower of Mordor, his power spread far and wide. Sauron gathered all the Great Rings to him, but always he searched for the One Ring that would complete his dominion.
+    </p>
+    <p>
+    When Bilbo reached his eleventy-first birthday he disappeared, bequeathing to his young cousin Frodo the Ruling Ring and a perilous quest: to journey across Middle-earth, deep into the shadow of the Dark Lord, and destroy the Ring by casting it into the Cracks of Doom.
+    </p>
+    <p>
+    <i>The Lord of the Rings</i> tells of the great quest undertaken by Frodo and the Fellowship of the Ring: Gandalf the Wizard; the hobbits Merry, Pippin, and Sam; Gimli the Dwarf; Legolas the Elf; Boromir of Gondor; and a tall, mysterious stranger called Strider.
+    </p>
+
+    <table>
+    <tr><th>Book №, Chapter №</th><th>Quote</th></tr>
+    <tr><td>Book 2, Chapter 1, pg. 281</td>
+        <td>
+        “Then the enchantment became more dreamlike, until he felt that an endless river of swelling gold and silver was flowing over him, too multitudinous for its pattern to be comprehended; it became part of the throbbing air about him, and it drenched and drowned him. Swiftly he sank under its shining weight into a deep realm of sleep.”
+        </td>
+    </tr>
+    <tr><td>Book 2, Chapter 7, pg. 426</td>
+        <td>
+        “'I don't miss Gandalf's fireworks, but his bushy eyebrows, and his quick temper, and his voice.'”
+        </td>
+    </tr>
+    <tr><td>Book 2, Chapter 9, pg. 463</td>
+        <td>
+        “The chasm was long and dark, and filled with the noise of wind and rushing water and echoing stone. It bent somewhat towards the west so that at first all was dark ahead; but soon Frodo saw a tall gap of light before him, ever growing. Swiftly it drew near, and suddenly the boats shot through, out into a wide clear light.”
+        </td>
+    </tr>
+    </table>
+    <br>
+    </div>
+
+  <div class=tabtext id=Form>
+    <h1>Form:</h1>
+    <hr>
+    <p>
+    Hey! We would be happy to know more about <i>you</i>! The form results can help us provide better content. Thanks!
+    </p>
+    
+    <form action="http://google.co.in">
+    <div align="center">
+    <h1>Readers Interests Survey form</h1>
+    Enter your name:
+    <input type="text" name="Name" size=35 maxlength=35 value=""> </br></br>
+
+    Do you have a favorite quote from any of the books you read?
+    <textarea name="Quotes" cols=30 rows=4></textarea> </br></br>
+    
+    How do you prefer to read your books?
+    <!-- Choose one value -->
+    <label><input type="radio" name="exe" value=1>Paper book</label>
+    <label><input type="radio" name="exe" value=2>E-book</label>
+    </p>
+    
+    What genre of books do you like most?
+    <p>
+    <!-- Select multiple options -->
+    <label><input type="checkbox" name="Suspense">Thriller & Suspense</label>
+    <label><input type="checkbox" name="Horror">Horror</label>
+    <label><input type="checkbox" name="Romance">Romance</label>
+    <label><input type="checkbox" name="Dystopian">Dystopian</label>
+    <label><input type="checkbox" name="SciFi">Science Fiction</label>
+    </p>
+
+    How many books are you reading at the moment? 
+    <!-- Choose one of the multiple dropdown options-->
+    <select name="bookpref" ><option>
+    <option value=1 selected = "true">0
+    <option value=2 >1
+    <option value=3 >2
+    <option value=4 >3
+    <option value=5 >More than 3
+    </select>
+    </br></br>
+    <input type="submit" value="Submit">
+    </div>
+    </form>
+    <br>
+  </div>
+
+  <footer name=footer>
+    <p>
+      <a href='#top'>Back To Top</a>
+    </p>
+    <hr>
+    <p>
+    Explore the Universes With Us
+    </p>
+    <p>
+      Email: <a href='mailto:fake@fakemail.com' target=_blank>fake@fakemail.com</a><br>
+      Telephone: 999-999-9999<br>
+      Facebook | YouTube | Twitter | Instagram @fake<br>
+      Rules and Regulations<br>
+      © ShelfIndulgence<br>
+    </p>
+  </footer>
+
+  <script>
+    // Id of the default tab (id=home)
+    const defaultTab = 'home';
+
+    // Set all tabs to call tabOpen(tabText) when clicked
+    var buttons = document.getElementsByClassName('navtab');
+
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].onclick = () => tabOpen(buttons[i].innerHTML);
+    }
+
+    // Function which will open the specified tab
+    function tabOpen(tabName) {
+      console.log(tabName);
+  
+      // Remove active class from tabs except specified
+      let buttons = document.getElementsByClassName('navtab');
+
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('active');
+
+        if (buttons[i].innerHTML == tabName) {
+          buttons[i].classList.add('active');
+        }
+      }
+
+      // Remove active class from tab texts except specified
+      let texts = document.getElementsByClassName('tabtext');
+  
+      for (let i = 0; i < texts.length; i++) {
+        texts[i].classList.remove('active');
+      }
+
+      document.getElementById(tabName).classList.add('active');
+    }
+
+    // Click the default tab
+    document.getElementById(defaultTab).click();
+  </script>
+</body>
+
+</html>
